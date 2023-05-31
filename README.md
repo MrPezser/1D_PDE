@@ -5,7 +5,7 @@ Structure
 -
 Grid
 + Class containg grid info: structured / unstructured, dx, num elemts, etc
-+ Array contain the coorinated of points
++ Array containing the coorinates of points
 
 Equation
 + Define fluxes (class functions)
