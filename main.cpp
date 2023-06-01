@@ -1,16 +1,33 @@
 #include <iostream>
 #include <cstdio>
-#include "GridClass.h"
 #include <vector>
+#include <cmath>
 
+#include "GridClass.h"
+#include "SpatialDiscretization.h"
+
+double initFunction(double x) {
+    ///hardcoded function which will provide a good initial condition for initial
+    /// testing and dev. this should be generalized in the future
+    if (x < 0.8) {
+        double beta = 0.01;
+        return exp(-(x-0.4)*(x-0.4) / beta);
+    } else {
+        return 1.0;
+    }
+}
 
 int main() {
-    auto grid = new GridClass(1, 10, 0.0, 1.0);
+    //Generate a 1D grid
+    GridClass grid(1, 10, 0.0, 1.0);
 
-    //std::vector<double> x = grid.x;
-    int nx = grid->nx;
+    //Initialize a solution on the grid
+    SpatialDiscretization FV(1);
 
-    printf("Generated uniform grid from %f to %f using %d elements.\n",\
-    grid->x[0], grid->x[nx], nx);
+    std::vector<double> u = *FV.initialize(grid, &initFunction);
 
+
+    for (int i=0; i<grid.nx; i++){
+        printf("x: %f\tu:%f\n", grid.x[i], u[i]);
+    }
 }

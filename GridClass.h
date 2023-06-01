@@ -16,6 +16,7 @@ class GridClass {
     std::vector<double> dx;
     int iStruct{};
     int nx{};
+
     GridClass(int iStrut, int nx, double xmin, double xmax);
     ~GridClass();
 };
