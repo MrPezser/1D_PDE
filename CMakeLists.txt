@@ -3,4 +3,4 @@ project(1D_PDE)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(1D_PDE main.cpp GridClass.cpp GridClass.h SpatialDiscretization.cpp SpatialDiscretization.h)
+add_executable(1D_PDE main.cpp SpatialDiscretization.cpp SpatialDiscretization.h GridUtil.cpp GridUtil.h Equations.cpp Equations.h)

@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\1D_PDE.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\1D_PDE.dir/objects.a @CMakeFiles\1D_PDE.dir\objects1
+C:\MinGW\bin\c++.exe -g -Wl,--whole-archive CMakeFiles\1D_PDE.dir/objects.a -Wl,--no-whole-archive -o 1D_PDE.exe -Wl,--out-implib,lib1D_PDE.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\1D_PDE.dir\linkLibs.rsp

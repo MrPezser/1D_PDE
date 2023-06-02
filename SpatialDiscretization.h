@@ -9,19 +9,18 @@
 #include <cstdio>
 #include <functional>
 #include <vector>
-#include "GridClass.h"
+using namespace std;
 
-class SpatialDiscretization {
+struct SpatialDiscretization {
 // Contains information of how to get from the underlying solution space to a certain discretized format
-
-    public:
-
     int iDiscr; //speficy the method
     int ndegr;  //degrees of freedom per element (= number of values ot store per element)
+    int nu{};
+    int nx{};
 
     explicit SpatialDiscretization(int);
 
-    std::vector<double> *initialize(GridClass grid, const std::function<double(double)> &u0Eval);
+    void initialize(int nx, vector<double>& x, double (&u0Eval)(double), vector<double> &u);
 };
 
 

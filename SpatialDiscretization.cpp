@@ -12,22 +12,22 @@ SpatialDiscretization::SpatialDiscretization(int iDiscr_input) {
     if (iDiscr == 1){
         //finite volume
         ndegr = 1;
+        return;
     }
     printf("Invalid discretization operator, change iDiscr.");
 }
 
-std::vector<double> * SpatialDiscretization::initialize(GridClass grid, const std::function<double(double)>& u0Eval) {
+void SpatialDiscretization::initialize(int nx_in, vector<double>& x, double (&u0Eval)(double), std::vector<double>& u) {
     //Initialize the solution vector
-    int nu = grid.nx * ndegr;
-    auto u = new std::vector<double>;
-    (*u).reserve(nu);
+    nx = nx_in;
+    nu = nx * ndegr;
+    u.reserve(nu);
 
     if (iDiscr == 1){
         //finite volume, use cell center
-        for (int i=0; i<grid.nx; i++) {
-            (*u)[i] = u0Eval(grid.x[i]);
+        for (int i=0; i<nx; i++) {
+            u[i] = u0Eval(x[i]);
         }
     }
 
-    return u;
 }
