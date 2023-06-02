@@ -2,7 +2,6 @@
 // Created by Tsail on 6/1/2023.
 //
 
-#include <cstdlib>
 #include "Equations.h"
 
 EquationSystem::EquationSystem(int iEqn_in, double a) {
@@ -17,4 +16,16 @@ double EquationSystem::get_MaxCharSpeed() {
         case 1 : return v1;
 
     }
+}
+
+double EquationSystem::get_FaceFlux(double uLeft, double uRight) {
+
+    if (iEqn ==1) {
+        if (v1 > 0){
+            return v1 * uLeft;
+        } else {
+            return v1 * uRight;
+        }
+    }
+    return NAN;
 }

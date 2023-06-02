@@ -6,6 +6,8 @@
 #define INC_1D_PDE_EQUATIONS_H
 
 #include <vector>
+#include <cstdlib>
+#include <cmath>
 
 struct EquationSystem {
 
@@ -14,7 +16,9 @@ struct EquationSystem {
     EquationSystem(int iEqn_in, double a);
     double get_MaxCharSpeed();
 
-    private:
+    double get_FaceFlux(double d, double d1);
+
+private:
     //general variable that can be used differently for different equations
     double v1;
 

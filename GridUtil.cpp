@@ -9,9 +9,10 @@ void GenerateGrid(int iStrut, int nx, double xmin, double xmax, std::vector<doub
     if (iStrut == 1) {
         //structured grids
         x.reserve(nx);
-        dx.push_back((xmax - xmin) / (nx - 1));
+        dx.reserve(nx);
 
         for (int i = 0; i < nx; i++) {
+            dx.push_back((xmax - xmin) / (nx - 1));
             x[i] = xmin + (double) i * dx[0];
         }
     }
