@@ -15,6 +15,7 @@ double calc_GhostCell(int iBC, int iSide, double dx, double ui, double value)  {
         //Neumann boundary condition
         return (ui + (dx*value*(double)iSide));
     }
+    return NAN;
 }
 
 SpatialDiscretization::SpatialDiscretization(int iDiscr_input) {
@@ -84,4 +85,16 @@ void SpatialDiscretization::calc_dudt(const vector<double>& dx, const vector<dou
         return;
     }
     dudt[0] = NAN;
+}
+
+void SpatialDiscretization::PrintSol(vector<double> x,vector<double> dx ,  vector<double> u, int num) {
+    char title [13];
+    sprintf(title, "waveout%3d.tec", num);
+    FILE* fout = fopen(title, "w");
+    fprintf(fout, "x\tu\n");
+
+    for (int i=0;i<nx;i++){
+        fprintf(fout, "%f\t%f\n",x[i]-(0.5*dx[i]), u[i]);
+        fprintf(fout, "%f\t%f\n",x[i]+(0.5*dx[i]), u[i]);
+    }
 }
