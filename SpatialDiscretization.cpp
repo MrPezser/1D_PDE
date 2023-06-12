@@ -40,20 +40,20 @@ void SpatialDiscretization::initialize(int nx_in, vector<double>& x, double (&u0
     if (iDiscr == 1){
         //finite volume, use cell center
         for (int i=0; i<nx; i++) {
-            u[i] = u0Eval(x[i]);
+            u.push_back(u0Eval(x[i]));
         }
     }
 
 }
-void SpatialDiscretization::calc_dudt(const vector<double>& dx, const vector<double>& u, const EquationSystem& PDE, vector<double>& dudt) const  {
+void SpatialDiscretization::calc_dudt(const vector<double>& dx, const vector<double>& u, const EquationSystem& PDE, vector<double>& dudt)  {
 
-    for (int i=0; i<nx; i++) {
+    for (int i=0; i<nu; i++) {
         dudt.push_back(0.0);
     }
 
     if (iDiscr==1){
         //FV-UP1
-        for (int iface=0; iface<=nx+1; iface++){
+        for (int iface=0; iface<(nx+1); iface++){
             //loop through the faces
             double uL, uR, flux;
 
@@ -87,7 +87,7 @@ void SpatialDiscretization::calc_dudt(const vector<double>& dx, const vector<dou
     dudt[0] = NAN;
 }
 
-void SpatialDiscretization::PrintSol(vector<double> x,vector<double> dx ,  vector<double> u, int num) {
+void SpatialDiscretization::print_sol(vector<double>& x, vector<double>& dx ,  vector<double>& u, int num) {
     char title [13];
     sprintf(title, "waveout%3d.tec", num);
     FILE* fout = fopen(title, "w");

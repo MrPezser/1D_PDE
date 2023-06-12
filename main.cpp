@@ -35,42 +35,54 @@ int main() {
     double a_in = 1.0;
     double xmin = 0.0;
     double xmax = 1.0;
-    double cfl = 0.5;
+    double cfl = 0.75;
+    double tmax = 1.0;
 
 
     int mxiter;
-    mxiter = 3;//ceil(0.1 * (a_in * (double)nx) / cfl);
+    mxiter = 65;
 
     vector<double> x;
     vector<double> dx;
     vector<double> u;
     vector<double> dudt;
+    double dt;
+    double t = 0.0;
 
     //Generate a 1D grid
+    printf("Generating Grid\n");
     GenerateGrid(iStrut, nx, xmin, xmax, dx, x);
 
+    printf("initializing Solution\n");
     //Initialize a solution on the grid and create a discretization object
     SpatialDiscretization SD(iDiscr);
     SD.initialize(nx, x, initFunction, u, dudt);
 
+    printf("Initializing Equation Object\n");
     //Select the desired PDE to solve and give parameters
     EquationSystem PDE(iEqn_in, a_in);
 
 
+    printf("Beginning Loop\n");
     for (int iter = 0; iter < mxiter; iter++) {
         //Perform Timestep / Update Solution
-        ExplicitEuler(nx, cfl, dx, SD, PDE, u);
-
+        dt = ExplicitEuler(nx, cfl, dx, SD, PDE, u);
+        t += dt;
 
         //Other Diagnostic / Output stuff
 
         //Check Convergence
+        if (t >= tmax) {break;}
     }
 
+    printf("Printing Out Solution\n");
+    SD.print_sol(x, dx, u, 1);
+
+    /*
     FILE* fout = fopen("waveout.tec", "w");
     fprintf(fout, "x\tu\n");
 
     for (int i=0;i<nx;i++){
         fprintf(fout, "%f\t%f\n",x[i], u[i]);
-    }
+    }*/
 }

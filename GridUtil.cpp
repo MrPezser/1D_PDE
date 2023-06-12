@@ -11,9 +11,12 @@ void GenerateGrid(int iStrut, int nx, double xmin, double xmax, std::vector<doub
         x.reserve(nx);
         dx.reserve(nx);
 
-        for (int i = 0; i < nx; i++) {
-            dx.push_back((xmax - xmin) / (nx - 1));
-            x[i] = xmin + (double) i * dx[0];
+        double dxa = (xmax - xmin) / (nx - 1);
+
+        for (int i=0; i<nx; i++) {
+            dx.push_back(dxa);
+            x.push_back(xmin + (double) i * dx[i]);
         }
     }
+    return;
 }

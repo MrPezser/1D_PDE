@@ -24,7 +24,9 @@ struct SpatialDiscretization {
 
     void initialize(int nx, vector<double>& x, double (&u0Eval)(double), vector<double> &u,  std::vector<double>& dudt);
 
-    void calc_dudt(const vector<double>& dx, const vector<double>& u, const EquationSystem& PDE, vector<double>& dudt) const;
+    void calc_dudt(const vector<double>& dx, const vector<double>& u, const EquationSystem& PDE, vector<double>& dudt);
+
+    void print_sol(vector<double>& x, vector<double>& dx, vector<double>& u, int num);
 };
 
 double calc_GhostCell(int iBC, int iSide, double dx, double ui, double value);
