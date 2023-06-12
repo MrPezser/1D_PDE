@@ -11,14 +11,14 @@ EquationSystem::EquationSystem(int iEqn_in, double a) {
     v1 = a; //For the advection equation v1 is the wave speed
 }
 
-double EquationSystem::get_MaxCharSpeed() {
+double EquationSystem::get_MaxCharSpeed() const{
     switch (iEqn) {
         case 1 : return v1;
 
     }
 }
 
-double EquationSystem::get_FaceFlux(double uLeft, double uRight) {
+double EquationSystem::get_FaceFlux(double uLeft, double uRight) const{
 
     if (iEqn ==1) {
         if (v1 > 0){

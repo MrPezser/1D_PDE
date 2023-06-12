@@ -1,0 +1,149 @@
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rkftjg
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_2197d/fast && mingw32-make.exe[1]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rkftjg'
+C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_2197d.dir\build.make CMakeFiles/cmTC_2197d.dir/build
+mingw32-make.exe[2]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rkftjg'
+Building C object CMakeFiles/cmTC_2197d.dir/CheckFunctionExists.c.obj
+C:\MinGW\bin\gcc.exe   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles\cmTC_2197d.dir\CheckFunctionExists.c.obj -c C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-rkftjg\CheckFunctionExists.c
+Linking C executable cmTC_2197d.exe
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_2197d.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_2197d.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\cmTC_2197d.dir/objects.a @CMakeFiles\cmTC_2197d.dir\objects1
+C:\MinGW\bin\gcc.exe  -DCHECK_FUNCTION_EXISTS=sgemm_ -Wl,--whole-archive CMakeFiles\cmTC_2197d.dir/objects.a -Wl,--no-whole-archive -o cmTC_2197d.exe -Wl,--out-implib,libcmTC_2197d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_2197d.dir\linkLibs.rsp
+CMakeFiles\cmTC_2197d.dir/objects.a(CheckFunctionExists.c.obj):CheckFunctionExists.c:(.text+0xc): undefined reference to `sgemm_'
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_2197d.dir\build.make:99: recipe for target 'cmTC_2197d.exe' failed
+mingw32-make.exe[2]: *** [cmTC_2197d.exe] Error 1
+mingw32-make.exe[2]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rkftjg'
+Makefile:126: recipe for target 'cmTC_2197d/fast' failed
+mingw32-make.exe[1]: *** [cmTC_2197d/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rkftjg'
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nmgo1t
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_cbb69/fast && mingw32-make.exe[1]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nmgo1t'
+C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_cbb69.dir\build.make CMakeFiles/cmTC_cbb69.dir/build
+mingw32-make.exe[2]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nmgo1t'
+Building C object CMakeFiles/cmTC_cbb69.dir/src.c.obj
+C:\MinGW\bin\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles\cmTC_cbb69.dir\src.c.obj -c C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-nmgo1t\src.c
+C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-nmgo1t\src.c:1:21: fatal error: pthread.h: No such file or directory
+ #include <pthread.h>
+                     ^
+compilation terminated.
+CMakeFiles\cmTC_cbb69.dir\build.make:76: recipe for target 'CMakeFiles/cmTC_cbb69.dir/src.c.obj' failed
+mingw32-make.exe[2]: *** [CMakeFiles/cmTC_cbb69.dir/src.c.obj] Error 1
+mingw32-make.exe[2]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nmgo1t'
+Makefile:126: recipe for target 'cmTC_cbb69/fast' failed
+mingw32-make.exe[1]: *** [cmTC_cbb69/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nmgo1t'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7hk884
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_1555b/fast && mingw32-make.exe[1]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7hk884'
+C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_1555b.dir\build.make CMakeFiles/cmTC_1555b.dir/build
+mingw32-make.exe[2]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7hk884'
+Building C object CMakeFiles/cmTC_1555b.dir/CheckFunctionExists.c.obj
+C:\MinGW\bin\gcc.exe   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles\cmTC_1555b.dir\CheckFunctionExists.c.obj -c C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-7hk884\CheckFunctionExists.c
+Linking C executable cmTC_1555b.exe
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_1555b.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_1555b.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\cmTC_1555b.dir/objects.a @CMakeFiles\cmTC_1555b.dir\objects1
+C:\MinGW\bin\gcc.exe  -DCHECK_FUNCTION_EXISTS=pthread_create -Wl,--whole-archive CMakeFiles\cmTC_1555b.dir/objects.a -Wl,--no-whole-archive -o cmTC_1555b.exe -Wl,--out-implib,libcmTC_1555b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_1555b.dir\linkLibs.rsp
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot find -lpthreads
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_1555b.dir\build.make:99: recipe for target 'cmTC_1555b.exe' failed
+mingw32-make.exe[2]: *** [cmTC_1555b.exe] Error 1
+mingw32-make.exe[2]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7hk884'
+Makefile:126: recipe for target 'cmTC_1555b/fast' failed
+mingw32-make.exe[1]: *** [cmTC_1555b/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7hk884'
+
+
+
+Determining if the function pthread_create exists in the pthread failed with the following output:
+Change Dir: C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sayv58
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_92985/fast && mingw32-make.exe[1]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sayv58'
+C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_92985.dir\build.make CMakeFiles/cmTC_92985.dir/build
+mingw32-make.exe[2]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sayv58'
+Building C object CMakeFiles/cmTC_92985.dir/CheckFunctionExists.c.obj
+C:\MinGW\bin\gcc.exe   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles\cmTC_92985.dir\CheckFunctionExists.c.obj -c C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-sayv58\CheckFunctionExists.c
+Linking C executable cmTC_92985.exe
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_92985.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_92985.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\cmTC_92985.dir/objects.a @CMakeFiles\cmTC_92985.dir\objects1
+C:\MinGW\bin\gcc.exe  -DCHECK_FUNCTION_EXISTS=pthread_create -Wl,--whole-archive CMakeFiles\cmTC_92985.dir/objects.a -Wl,--no-whole-archive -o cmTC_92985.exe -Wl,--out-implib,libcmTC_92985.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_92985.dir\linkLibs.rsp
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot find -lpthread
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_92985.dir\build.make:99: recipe for target 'cmTC_92985.exe' failed
+mingw32-make.exe[2]: *** [cmTC_92985.exe] Error 1
+mingw32-make.exe[2]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sayv58'
+Makefile:126: recipe for target 'cmTC_92985/fast' failed
+mingw32-make.exe[1]: *** [cmTC_92985/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sayv58'
+
+
+
+Determining if the __fbufsize exist failed with the following output:
+Change Dir: C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nitpvn
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_7a92d/fast && mingw32-make.exe[1]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nitpvn'
+C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_7a92d.dir\build.make CMakeFiles/cmTC_7a92d.dir/build
+mingw32-make.exe[2]: Entering directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nitpvn'
+Building C object CMakeFiles/cmTC_7a92d.dir/CheckSymbolExists.c.obj
+C:\MinGW\bin\gcc.exe    -o CMakeFiles\cmTC_7a92d.dir\CheckSymbolExists.c.obj -c C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-nitpvn\CheckSymbolExists.c
+C:\Users\Tsail\OneDrive\Documents\Projects\CFD\Github\1D_PDE\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-nitpvn\CheckSymbolExists.c:2:23: fatal error: stdio_ext.h: No such file or directory
+ #include <stdio_ext.h>
+                       ^
+compilation terminated.
+CMakeFiles\cmTC_7a92d.dir\build.make:76: recipe for target 'CMakeFiles/cmTC_7a92d.dir/CheckSymbolExists.c.obj' failed
+mingw32-make.exe[2]: *** [CMakeFiles/cmTC_7a92d.dir/CheckSymbolExists.c.obj] Error 1
+mingw32-make.exe[2]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nitpvn'
+Makefile:126: recipe for target 'cmTC_7a92d/fast' failed
+mingw32-make.exe[1]: *** [cmTC_7a92d/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-nitpvn'
+
+
+File CheckSymbolExists.c:
+/* */
+#include <stdio_ext.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __fbufsize
+  return ((int*)(&__fbufsize))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

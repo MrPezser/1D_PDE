@@ -44,9 +44,11 @@ void SpatialDiscretization::initialize(int nx_in, vector<double>& x, double (&u0
     }
 
 }
-void SpatialDiscretization::calc_dudt(vector<double>& dx, vector<double>& u, EquationSystem& PDE, vector<double>& dudt) const  {
+void SpatialDiscretization::calc_dudt(const vector<double>& dx, const vector<double>& u, const EquationSystem& PDE, vector<double>& dudt) const  {
 
-    for (int i=0; i<nx; i++) {dudt[i] = 0.0;}
+    for (int i=0; i<nx; i++) {
+        dudt.push_back(0.0);
+    }
 
     if (iDiscr==1){
         //FV-UP1

@@ -200,6 +200,30 @@ SpatialDiscretization.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\1D_PDE.dir\build.make CMakeFiles/1D_PDE.dir/SpatialDiscretization.cpp.s
 .PHONY : SpatialDiscretization.cpp.s
 
+TimeIntegration.obj: TimeIntegration.cpp.obj
+.PHONY : TimeIntegration.obj
+
+# target to build an object file
+TimeIntegration.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1D_PDE.dir\build.make CMakeFiles/1D_PDE.dir/TimeIntegration.cpp.obj
+.PHONY : TimeIntegration.cpp.obj
+
+TimeIntegration.i: TimeIntegration.cpp.i
+.PHONY : TimeIntegration.i
+
+# target to preprocess a source file
+TimeIntegration.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1D_PDE.dir\build.make CMakeFiles/1D_PDE.dir/TimeIntegration.cpp.i
+.PHONY : TimeIntegration.cpp.i
+
+TimeIntegration.s: TimeIntegration.cpp.s
+.PHONY : TimeIntegration.s
+
+# target to generate assembly for a file
+TimeIntegration.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1D_PDE.dir\build.make CMakeFiles/1D_PDE.dir/TimeIntegration.cpp.s
+.PHONY : TimeIntegration.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -242,6 +266,9 @@ help:
 	@echo ... SpatialDiscretization.obj
 	@echo ... SpatialDiscretization.i
 	@echo ... SpatialDiscretization.s
+	@echo ... TimeIntegration.obj
+	@echo ... TimeIntegration.i
+	@echo ... TimeIntegration.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

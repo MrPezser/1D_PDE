@@ -7,6 +7,8 @@
 #include "GridUtil.h"
 #include "SpatialDiscretization.h"
 #include "Equations.h"
+#include "TimeIntegration.h"
+
 using namespace std;
 
 double initFunction(double x) {
@@ -21,9 +23,7 @@ double initFunction(double x) {
     }
 }
 
-void CalcDt(double cfl, vector<double>& dx, EquationSystem PDE , double &dt) {
-    dt = cfl * (*min_element(dx.begin(), dx.end())) / PDE.get_MaxCharSpeed();
-}
+
 
 
 int main() {
@@ -31,14 +31,16 @@ int main() {
     int nx = 50;
     int iStrut = 1;
     int iDiscr = 1;
-    int mxiter = 1;
     int iEqn_in = 1;
     double a_in = 1.0;
     double xmin = 0.0;
     double xmax = 1.0;
     double cfl = 0.5;
 
-    double dt;
+
+    int mxiter;
+    mxiter = 3;//ceil(0.1 * (a_in * (double)nx) / cfl);
+
     vector<double> x;
     vector<double> dx;
     vector<double> u;
@@ -56,20 +58,19 @@ int main() {
 
 
     for (int iter = 0; iter < mxiter; iter++) {
-        //Calculate Timestep ~~ dt = cfl * dx / a
-        CalcDt(cfl, dx, PDE, dt);
+        //Perform Timestep / Update Solution
+        ExplicitEuler(nx, cfl, dx, SD, PDE, u);
 
-        //Calculate Solution update
-        SD.calc_dudt(dx, u, PDE, dudt);
-
-        //Update Solution / Perform Iteration
-
-        //Compute Residual
 
         //Other Diagnostic / Output stuff
-        for (int i=0;i<nx;i++){
-            printf("i:%d\tx:%f\tu:%f\tdudt:%f\n",i, x[i], u[i], dudt[i] );
-        }
+
         //Check Convergence
+    }
+
+    FILE* fout = fopen("waveout.tec", "w");
+    fprintf(fout, "x\tu\n");
+
+    for (int i=0;i<nx;i++){
+        fprintf(fout, "%f\t%f\n",x[i], u[i]);
     }
 }

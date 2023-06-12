@@ -98,6 +98,12 @@
 		<Unit filename="C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/SpatialDiscretization.h">
 			<Option target="1D_PDE"/>
 		</Unit>
+		<Unit filename="C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/TimeIntegration.cpp">
+			<Option target="1D_PDE"/>
+		</Unit>
+		<Unit filename="C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/TimeIntegration.h">
+			<Option target="1D_PDE"/>
+		</Unit>
 		<Unit filename="C:/Users/Tsail/OneDrive/Documents/Projects/CFD/Github/1D_PDE/main.cpp">
 			<Option target="1D_PDE"/>
 		</Unit>

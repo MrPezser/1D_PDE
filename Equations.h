@@ -14,9 +14,9 @@ struct EquationSystem {
     int iEqn;
 
     EquationSystem(int iEqn_in, double a);
-    double get_MaxCharSpeed();
 
-    double get_FaceFlux(double d, double d1);
+    double get_MaxCharSpeed() const;
+    double get_FaceFlux(double d, double d1) const;
 
 private:
     //general variable that can be used differently for different equations
