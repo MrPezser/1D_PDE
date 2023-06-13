@@ -18,5 +18,4 @@ void GenerateGrid(int iStrut, int nx, double xmin, double xmax, std::vector<doub
             x.push_back(xmin + (double) i * dx[i]);
         }
     }
-    return;
 }
