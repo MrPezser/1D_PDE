@@ -1,7 +1,9 @@
 # 1D_PDE
 
 [State of Project: Finite Volume of Advection Equation]
+
 [Has been abandonded in favor of more focused projects (see FR1D)]
+
 [Leaving this archived in case Iwant to come back to it later]
 
  Explorations in solving PDEs in one spatial dimention.
